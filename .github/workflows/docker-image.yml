@@ -3,7 +3,8 @@ name: dockerimagepush
 on:
   push:
     branches:
-      - 'main'
+      - '' # e.g; main
+  workflow_dispatch:
 
 jobs:
   docker:
@@ -26,4 +27,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: mayankahuja/aksagentwithdocker:2.0
+          tags: mayankahuja/aceagentonaks:1.0
