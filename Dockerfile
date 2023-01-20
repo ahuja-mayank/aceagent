@@ -135,5 +135,6 @@ ENV TARGETARCH=linux-x64
 WORKDIR /azp
 COPY ./start.sh .
 RUN chmod +x start.sh
+RUN chmod +x ./start.sh
 
 ENTRYPOINT ["./start.sh"]
