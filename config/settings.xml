@@ -1,0 +1,49 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <localRepository>/maven/.m2/repository</localRepository>
+    <servers>
+        <server>
+            <id>{{ secrets.AZURE_FEED_NAME }}</id>
+            <username>{{ secrets.AZURE_ORG_NAME }}</username>
+            <password>{{ secrets.AZURE_PAT }}</password>
+        </server>
+    </servers>
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <id>{{ secrets.AZURE_FEED_NAME }}</id>
+                    <url>{{ secrets.AZURE_FEED_URL }}</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>{{ secrets.AZURE_FEED_NAME }}</id>
+                    <name>plugins-release</name>
+                    <url>{{ secrets.AZURE_FEED_URL }}</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots/>
+                    <id>{{ secrets.AZURE_FEED_NAME }}</id>
+                    <name>plugins-snapshot</name>
+                    <url>{{ secrets.AZURE_FEED_URL }}</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>vcc-prod</id>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>vcc-prod</activeProfile>
+    </activeProfiles>
+</settings>
